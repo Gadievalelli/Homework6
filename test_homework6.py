@@ -95,7 +95,7 @@ def test_readable_function():
 def print_function_name_and_args(func, *args): # функция принимает имя функции и значения аргументов
     func_name = func.__name__.replace('_', ' ').title()  # получаем имя функции и преобразуем его в читаемый вид (заменяем символ подчеркивания на пробел, делаем первую букву заглавной)
     args_name = ", ".join([*args]) # преобразуем значения аргументов в строку
-    print(f"{func_name} [{args_name}]") # печатаем имя функции и значения аргументов
+    print(f"{func_name} [{args_name}]")
     return f"{func_name} [{args_name}]"
 
 
