@@ -7,8 +7,7 @@ def test_dark_theme_by_time():
     """
     current_time = time(hour=23)
     # TODO переключите темную тему в зависимости от времени суток (с 22 до 6 часов утра - ночь)
-    is_dark_theme = []
-    if time(hour=22) >= current_time >= time(hour=6):
+    if time(hour=22) >= current_time >= time(hour<6):
         is_dark_theme = False
     else:
         is_dark_theme = True
@@ -28,16 +27,15 @@ def test_dark_theme_by_time_and_user_choice():
     # TODO переключите темную тему в зависимости от времени суток,
     #  но учтите что темная тема может быть включена вручную
 
-    is_dark_theme = None
-    dark_theme_enabled_by_user = True
-
-    if dark_theme_enabled_by_user:
-        is_dark_theme = dark_theme_enabled_by_user
-    elif dark_theme_enabled_by_user is None:
-        if time(hour=22) >= current_time >= time(hour=6):
-            is_dark_theme = False
-    else:
+    if dark_theme_enabled_by_user is True:
         is_dark_theme = True
+    elif dark_theme_enabled_by_user is False:
+        is_dark_theme = False
+    elif dark_theme_enabled_by_user is None:
+        if current_time.hour >= 22 or current_time.hour < 6:
+            is_dark_theme = True
+        else:
+            is_dark_theme = False
 
     assert is_dark_theme is True
 
@@ -92,9 +90,8 @@ def test_readable_function():
     find_registration_button_on_login_page(page_url="https://companyname.com/login", button_text="Register")
 
 
-def print_function_name_and_args(func, *args): # функция принимает имя функции и значения аргументов
-    func_name = func.__name__.replace('_', ' ').title()  # получаем имя функции и преобразуем его в читаемый вид (заменяем символ подчеркивания на пробел, делаем первую букву заглавной)
-    args_name = ", ".join([*args]) # преобразуем значения аргументов в строку
+def print_function_name_and_args(func, *args):
+    func_name = func.__name__.replace('_', ' ').title()
     print(f"{func_name} [{args_name}]")
     return f"{func_name} [{args_name}]"
 
