@@ -95,7 +95,7 @@ def print_function_name_and_args(func, *args):
     print(f"{func_name} [{args_name}]")
     return f"{func_name} [{args_name}]"
 
-
+ 
 def open_browser(browser_name):
     actual_result = print_function_name_and_args(open_browser, browser_name)
     assert actual_result == "Open Browser [Chrome]"
